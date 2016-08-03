@@ -1,4 +1,7 @@
 # -*- coding: UTF-8 -*-
+"""
+사이트 운영에 필요한 기본 설정 내역
+"""
 import os
 
 _basedir = os.path.abspath(os.path.dirname(__file__))
