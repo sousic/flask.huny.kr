@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block script %}
+<script>
+    var Form  = {
+        ChkFrm:function(e)
+        {
+            alert('111');
+            return false;
+        },
+    };
+
+    $(function() {
+       $("#sForm").on("submit", Form.ChkFrm);
+    });
+</script>
+{% endblock %}
+{% block body%}
+    <div>
+        <form id="sForm" method="post" action="{{ url_for('home.login') }}">
+          <div class="form-group">
+            <label for="exampleInputEmail1">user id</label>
+            <input type="email" class="form-control" id="userid" name="userid" placeholder="User ID">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">user pwd</label>
+            <input type="password" class="form-control" id="userpwd" name="userpwd" placeholder="Password">
+          </div>
+          <div class="form-group">
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+    </div>
+{% endblock %}
+{% block footer %}
+{% endblock %}
