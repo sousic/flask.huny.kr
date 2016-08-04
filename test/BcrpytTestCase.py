@@ -14,7 +14,6 @@ class BcrpytTestCase(unittest.TestCase):
         strUserID = 'TEST'
 
         pw_hash =  bcrypt.hashpw(strUserID, bcrypt.gensalt())
-        strUserID = 'aaa'
         print pw_hash
 
         if bcrypt.hashpw(strUserID,pw_hash) == pw_hash:
