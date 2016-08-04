@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Python 3.4
+# Python 3.4 -> Python 2.7.x
 # author: http://blog.dokenzy.com/
 # date: 2015. 4. 8
 
@@ -10,10 +10,11 @@
 # http://www.di-mgt.com.au/cryptopad.html
 # https://github.com/dlitz/pycrypto
 
+import sys
 import base64
 import hashlib
-from Crypto import Random
-from Crypto.Cipher import AES
+from Cryptodome import Random
+from Cryptodome.Cipher import AES
 
 BS = 16
 pad = lambda s: s + (BS - len(s) % BS) * chr(BS - len(s) % BS).encode()
@@ -40,7 +41,11 @@ class AESCipher(object):
         It is assumed that you use Python 3.0+
         , so plaintext's type must be str type(== unicode).
         """
-        message = message.encode()
+        if sys.version_info.major  == 2:
+            message = message.encode('utf-8')
+        else:
+            message = message.encode()
+
         raw = pad(message)
         cipher = AES.new(self.key, AES.MODE_CBC, iv())
         enc = cipher.encrypt(raw)
@@ -52,18 +57,23 @@ class AESCipher(object):
         dec = cipher.decrypt(enc)
         return unpad(dec).decode('utf-8')
 
-
+"""
 key = 'abcdefghijklmnopqrstuvwxyz123456'
 
-message = '한글을 테스트 합니다.'
-_enc = 'gOXlygE+qxS+69zN5qC6eKJvMiEoDQtdoJb3zjT8f/E='
-#message = 'imcore.net'
-#enc = 'kWyuTmUELRiREWIPpLy3ZA=='
-#message = 'Test English...'
-#answer = 'rvs4H8x4Q8sblGG1jkOHFQ=='
+if __name__ == '__main__':
 
-enc = AESCipher(key).encrypt(message)
-dec = AESCipher(key).decrypt(_enc)
+    message = u'한글을 테스트 합니다.'
+    _enc = 'gOXlygE+qxS+69zN5qC6eKJvMiEoDQtdoJb3zjT8f/E='
+    #message = 'imcore.net'
+    #enc = 'kWyuTmUELRiREWIPpLy3ZA=='
+    #message = 'Test English...'
+    #answer = 'rvs4H8x4Q8sblGG1jkOHFQ=='
 
-print(_enc == enc)
-print(message == dec)
+    enc = AESCipher(key).encrypt(message)
+    print enc
+    dec = AESCipher(key).decrypt(_enc)
+    print dec
+
+    print(_enc == enc)
+    print(message == dec)
+"""
