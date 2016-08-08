@@ -34,12 +34,12 @@ class home(object):
 
             return response
 
-        return render_template('home/index.html', title='Home')
+        return redirect(url_for('home/main.html'))
 
     @mod.route('/main/')
     @cookie_helper.CheckCookie
     def main():
-        id = cookie_helper.GetCookies(request)
+        id = cookie_helper.GetUserID(request).id
         return render_template('home/main.html', title="Main", userid = id)
 
     @mod.route('/mypage/')

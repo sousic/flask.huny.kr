@@ -10,5 +10,6 @@ DEBUG = True
 SECRET_KEY = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
 IV = 'BBBBBBBBBBBBBBBB'
 DATABASE_URI = 'sqllite:///' + os.path.join(_basedir, 'website.db')
+COOKIE_NAME = 'FWHK'
 
 del os

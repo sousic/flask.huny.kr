@@ -5,7 +5,6 @@ from flask import json
 
 
 class UserVO():
-
     seq = 0
     id = ''
     password = ''
@@ -13,3 +12,7 @@ class UserVO():
 
     def to_json(self):
         return json.dumps(self.__dict__)
+
+    def to_object(self, j):
+        print j
+        self.__dict__ = json.loads(j)
