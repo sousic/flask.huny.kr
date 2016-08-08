@@ -41,3 +41,8 @@ class home(object):
     def main():
         id = cookie_helper.GetCookies(request)
         return render_template('home/main.html', title="Main", userid = id)
+
+    @mod.route('/mypage/')
+    @cookie_helper.CheckCookie
+    def mypage():
+        return render_template('home/index.html', title='MyPage')
