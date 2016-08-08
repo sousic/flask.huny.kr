@@ -13,10 +13,8 @@ class home(object):
     mod = Blueprint('home', __name__)
 
     @mod.route('/')
-    def home():
-        #return redirect(url_for('home.login'))
-        return render_template('home/index.html', title = 'Home')
-
+    def index():
+        return render_template('home/index.html')
 
     @mod.route('/login/', methods=['GET', 'POST'])
     def login():

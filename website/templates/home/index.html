@@ -14,7 +14,8 @@
 </script>
 {% endblock %}
 {% block body%}
-    <div>
+    <div class="jumbotron">
+        <p>Login</p>
         <form id="sForm" method="POST" action="{{ url_for('home.login') }}">
           <div class="form-group">
             <label for="exampleInputEmail1">user id</label>
