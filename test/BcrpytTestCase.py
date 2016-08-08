@@ -1,8 +1,8 @@
 # -*- coding: UTF-8 -*-
 import unittest
 
-from flask import Flask
 import bcrypt
+from flask import Flask
 
 class BcrpytTestCase(unittest.TestCase):
     def setUp(self):

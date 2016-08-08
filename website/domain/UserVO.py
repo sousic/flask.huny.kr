@@ -14,5 +14,4 @@ class UserVO():
         return json.dumps(self.__dict__)
 
     def to_object(self, j):
-        print j
         self.__dict__ = json.loads(j)

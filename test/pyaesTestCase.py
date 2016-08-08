@@ -1,8 +1,9 @@
 # -*- coding: UTF-8 -*-
-import os
-import unittest
-import pyaes
 import base64
+import unittest
+
+import pyaes
+
 
 class pyseTestCase(unittest.TestCase):
     def setUp(self):
