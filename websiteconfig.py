@@ -7,7 +7,8 @@ import os
 _basedir = os.path.abspath(os.path.dirname(__file__))
 
 DEBUG = True
-SECRET_KEY = 'testkey'
+SECRET_KEY = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
+IV = 'BBBBBBBBBBBBBBBB'
 DATABASE_URI = 'sqllite:///' + os.path.join(_basedir, 'website.db')
 
 del os

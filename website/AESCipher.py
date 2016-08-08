@@ -16,6 +16,8 @@ import hashlib
 from Cryptodome import Random
 from Cryptodome.Cipher import AES
 
+import websiteconfig
+
 BS = 16
 pad = lambda s: s + (BS - len(s) % BS) * chr(BS - len(s) % BS).encode()
 unpad = lambda s: s[:-ord(s[len(s)-1:])]
@@ -57,8 +59,9 @@ class AESCipher(object):
         dec = cipher.decrypt(enc)
         return unpad(dec).decode('utf-8')
 
+#key = 'eyJpZCI6ICIxMTIyMiIsICJwYXNzd29yZCI6ICIyMjIyIiwgInNlcSI6IDB9'
 """
-key = 'abcdefghijklmnopqrstuvwxyz123456'
+
 
 if __name__ == '__main__':
 

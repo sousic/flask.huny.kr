@@ -6,7 +6,7 @@ from website.AESCipher import AESCipher
 
 class AESTestCase(unittest.TestCase):
     def setUp(self):
-        self.key = 'abcdefghijklmnopqrstuvwxyz123456'
+        self.key = 'eyJpZCI6ICIxMTIyMiIsICJwYXNzd29yZCI6ICIyMjIyIiwgInNlcSI6IDB9' #'abcdefghijklmnopqrstuvwxyz123456'
         self.mssage = u'한글을 테스트 합니다.'
         self._enc = 'gOXlygE+qxS+69zN5qC6eKJvMiEoDQtdoJb3zjT8f/E='
 
