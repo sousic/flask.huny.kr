@@ -1,29 +1,43 @@
 # -*- coding: UTF-8 -*-
-import flask_login
+import base64
+
+import pyaes
 from flask import Flask, Blueprint, render_template, redirect, url_for, request
-from website import User
+from flask import json
+from flask import make_response
 
+from website import cookie_helper
+from website.domain.UserVO import UserVO
 
-class home:
+class home(object):
     mod = Blueprint('home', __name__)
 
     @mod.route('/')
     def home():
+        #return redirect(url_for('home.login'))
         return render_template('home/index.html', title = 'Home')
 
-    @mod.route('/login/')
+
+    @mod.route('/login/', methods=['GET', 'POST'])
     def login():
-        #if request.method == 'GET':
-        user = User()
-        user.id = 'test'
-        user.state = 'admin'
+        if request.method == 'POST':
+            id = request.form['userid']
+            password = request.form['userpwd']
 
-        flask_login.login_user(user)
-        return ''
-        #return redirect(url_for('/'))
+            user = UserVO()
+            user.seq = 0
+            user.id = id
+            user.password = password
 
-    @mod.route("/check/")
-    @flask_login.login_required
-    def login_check():
-        print flask_login._get_user().id, flask_login._get_user().state
-        return ''
+            response = make_response(redirect(url_for('home.main')))
+            cookie_helper.SetCookies(response, user)
+
+            return response
+
+        return render_template('home/index.html', title='Home')
+
+    @mod.route('/main/')
+    @cookie_helper.CheckCookie
+    def main():
+        id = cookie_helper.GetCookies(request)
+        return render_template('home/main.html', title="Main", userid = id)
