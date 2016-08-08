@@ -9,12 +9,12 @@ from flask import make_response
 from website import cookie_helper
 from website.domain.UserVO import UserVO
 
-class home(object):
+class home():
     mod = Blueprint('home', __name__)
 
     @mod.route('/')
     def index():
-        return render_template('home/index.html')
+        return render_template('home/index.html', title = 'Index')
 
     @mod.route('/login/', methods=['GET', 'POST'])
     def login():
@@ -37,10 +37,9 @@ class home(object):
     @mod.route('/main/')
     @cookie_helper.CheckCookie
     def main():
-        id = cookie_helper.GetUserID(request).id
-        return render_template('home/main.html', title="Main", userid = id)
+        #id = cookie_helper.GetUserID(request).id
+        return render_template('home/main.html', title = '', userid = None)
 
-    @mod.route('/mypage/')
-    @cookie_helper.CheckCookie
-    def mypage():
-        return render_template('home/index.html', title='MyPage')
+    @mod.route('/register/')
+    def register():
+        return render_template('home/register.html', title = '')

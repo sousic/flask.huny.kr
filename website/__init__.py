@@ -10,4 +10,6 @@ cookie_helper = CookieHelper()
 cookie_helper.init_app(app)
 
 from views.home import home
+from views.member import member
 app.register_blueprint(home.mod)
+app.register_blueprint(member.mod)
