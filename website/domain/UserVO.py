@@ -4,7 +4,7 @@ from website.domain.basicVO import basicVO
 
 class UserVO(basicVO):
     seq = 0
-    id = ''
+    user_id = ''
     password = ''
     pwd_fail_cnt = 0
     user_name = ''

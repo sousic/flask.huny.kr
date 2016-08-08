@@ -1,7 +1,10 @@
 # -*- coding: UTF-8 -*-
 from flask import Blueprint, render_template, request, redirect, url_for
 
+from website import common_dao
 from website.domain.UserVO import UserVO
+from website.persistence.memberDAO import memberDAO
+
 
 class member():
     mod = Blueprint('member', __name__, url_prefix='/member')
@@ -13,6 +16,9 @@ class member():
             user.id = request.form['userid']
             user.password = request.form['userpwd']
             user.user_name = request.form['username']
+
+            member_dao = memberDAO(common_dao)
+            member_dao.memberIdCheck(user)
 
             return redirect(url_for('home.main'))
 

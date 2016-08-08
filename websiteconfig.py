@@ -9,7 +9,8 @@ _basedir = os.path.abspath(os.path.dirname(__file__))
 DEBUG = True
 SECRET_KEY = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
 IV = 'BBBBBBBBBBBBBBBB'
-DATABASE_URI = 'sqllite:///' + os.path.join(_basedir, 'website.db')
+#DATABASE_URI = 'sqllite:///' + os.path.join(_basedir, 'website.db')
+DATABASE_URI = os.path.join(_basedir,'website.db')
 COOKIE_NAME = 'FWHK'
 
 del os

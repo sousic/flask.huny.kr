@@ -19,12 +19,12 @@ class home():
     @mod.route('/login/', methods=['GET', 'POST'])
     def login():
         if request.method == 'POST':
-            id = request.form['userid']
+            user_id = request.form['userid']
             password = request.form['userpwd']
 
             user = UserVO()
             user.seq = 0
-            user.id = id
+            user.user_id = user_id
             user.password = password
 
             response = make_response(redirect(url_for('home.main')))
@@ -37,7 +37,7 @@ class home():
     @mod.route('/main/')
     @cookie_helper.CheckCookie
     def main():
-        #id = cookie_helper.GetUserID(request).id
+        #id = cookie_helper.GetUserID(request).user_id
         return render_template('home/main.html', title = '', userid = None)
 
     @mod.route('/register/')
