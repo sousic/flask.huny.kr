@@ -12,6 +12,7 @@ class commonDAO:
             top.sqlite_db = sqlite3.connect(self.app.config['DATABASE_URI'])
             return top.sqlite_db
 
+    #@self.app.teardown_appcontext
     def close_connection(self, exception):
         top = _app_ctx_stack.top
         if hasattr(top, 'sqlite_db'):
