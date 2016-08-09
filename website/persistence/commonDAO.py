@@ -17,7 +17,7 @@ class commonDAO:
         cur = self.sqlite_db.execute(querys, args)
         rs = cur.fetchall()
         cur.close()
-        self.sqlite_db
+        self.disconnection_db()
         return (rs[0] if rs else None) if one else rs
 
     def insertQuery(self, querys, args=(), one=False):
@@ -25,3 +25,4 @@ class commonDAO:
         cur = self.sqlite_db.execute(querys, args)
         self.sqlite_db.commit()
         cur.close()
+        self.disconnection_db()
