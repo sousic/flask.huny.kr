@@ -1,15 +1,53 @@
 {% extends "layout.html" %}
 {% block script %}
-<script>
+<script type="text/javascript">
+    $(function() {
+        $("#btnIDChecker").on("click", function(e){
+            e.preventDefault();
+            if($.trim($("#userid").val()) == '')
+            {
+                alert('ID를 넣어주세요.');
+                $("#userid").focus();
+                return false;
+            }
+            else
+            {
+                $.post('/member/idcheck', { userid : $("#userid").val()}, function(data) {
+                    if(data.result == 1) {
+                        alert('사용할수 있습니다.');
+                        $("#checker").val(1);
+                    }
+                    else {
+                        alert('사용 할수 없습니다.');
+                        $("#checker").val(0);
+                    }
+                }, "json");
+            }
+        });
 
+        $("#btnSubmit").on("click", function(e) {
+            e.preventDefault();
+            if($.trim($("#userid").val()) == '') {
+                
+            }
+        });
+    });
 </script>
 {% endblock %}
 {% block body%}
     <div class="jumbotron">
         <form id="sForm" method="POST" action="{{ url_for('member.regist') }}">
           <div class="form-group">
-            <label for="exampleInputEmail1">user id</label>
-            <input type="text" class="form-control" id="userid" name="userid" placeholder="User ID">
+                <label for="exampleInputEmail1">user id</label>
+                <div class="row">
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" id="userid" name="userid" placeholder="User ID">
+                    </div>
+                    <div class="col-xs-1">
+                        <button type="submit" class="btn btn-default" id="btnIDChecker">id checker</button>
+                    </div>
+                    <input type="hidden" id="checker" name="checker" value=""/>
+                </div>
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">user pwd</label>
@@ -24,7 +62,7 @@
             <input type="password" class="form-control" id="username" name="username" placeholder="user name">
           </div>
           <div class="form-group">
-          <button type="submit" class="btn btn-default btn-primary">Regist</button>
+          <button type="submit" class="btn btn-default btn-primary" id="btnSubmit">Regist</button>
         </form>
     </div>
 {% endblock %}
