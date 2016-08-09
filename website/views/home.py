@@ -1,13 +1,11 @@
 # -*- coding: UTF-8 -*-
-import base64
 
-import pyaes
-from flask import Flask, Blueprint, render_template, redirect, url_for, request
-from flask import json
+from flask import Blueprint, render_template, redirect, url_for, request
 from flask import make_response
 
 from website import cookie_helper
 from website.domain.UserVO import UserVO
+
 
 class home():
     mod = Blueprint('home', __name__)
@@ -20,12 +18,12 @@ class home():
     def login():
         if request.method == 'POST':
             user_id = request.form['userid']
-            password = request.form['userpwd']
+            user_pwd = request.form['userpwd']
 
             user = UserVO()
             user.seq = 0
             user.user_id = user_id
-            user.password = password
+            user.user_pwd = user_pwd
 
             response = make_response(redirect(url_for('home.main')))
             cookie_helper.SetCookies(response, user)

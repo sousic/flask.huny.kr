@@ -19,3 +19,9 @@ class commonDAO:
         cur.close()
         self.sqlite_db
         return (rs[0] if rs else None) if one else rs
+
+    def insertQuery(self, querys, args=(), one=False):
+        self.connection_db()
+        cur = self.sqlite_db.execute(querys, args)
+        self.sqlite_db.commit()
+        cur.close()
