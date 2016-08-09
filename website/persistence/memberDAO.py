@@ -10,6 +10,5 @@ class memberDAO:
         pass
 
     def memberIdCheck(self, user):
-        cursor = self.common_dao.get_db().execute('select user_id from member where user_id = ?', [user.user_id])
-        user_id = cursor.fetchall()
-        print user_id
+        user_id = self.common_dao.executeQuery('select user_id from member where user_id = ?', [user.user_id])
+        return user_id

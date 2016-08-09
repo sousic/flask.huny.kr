@@ -18,7 +18,8 @@ class member():
             user.user_name = request.form['username']
 
             member_dao = memberDAO(common_dao)
-            member_dao.memberIdCheck(user)
+            user_id = member_dao.memberIdCheck(user)
+            print 'user_id :', user_id
 
             return redirect(url_for('home.main'))
 
