@@ -6,7 +6,7 @@
             e.preventDefault();
             if($.trim($("#userid").val()) == '')
             {
-                alert('ID를 넣어주세요.');
+                alert('아이디를 넣어주세요.');
                 $("#userid").focus();
                 return false;
             }
@@ -28,7 +28,12 @@
         $("#btnSubmit").on("click", function(e) {
             e.preventDefault();
             if($.trim($("#userid").val()) == '') {
-                
+                alert('아이디를 넣어주세요.');
+                $("#userid").focus();
+            }
+            if($.trim($("#checker").val()) == '') {
+                alert('아이디 확인을 해주세요.');
+                $("#userid").focus();
             }
         });
     });
@@ -38,31 +43,31 @@
     <div class="jumbotron">
         <form id="sForm" method="POST" action="{{ url_for('member.regist') }}">
           <div class="form-group">
-                <label for="exampleInputEmail1">user id</label>
+                <label for="exampleInputEmail1">아이디</label>
                 <div class="row">
                     <div class="col-xs-10">
-                        <input type="text" class="form-control" id="userid" name="userid" placeholder="User ID">
+                        <input type="text" class="form-control" id="userid" name="userid" placeholder="아이디">
                     </div>
                     <div class="col-xs-1">
-                        <button type="submit" class="btn btn-default" id="btnIDChecker">id checker</button>
+                        <button type="submit" class="btn btn-default" id="btnIDChecker">아이디 확인</button>
                     </div>
                     <input type="hidden" id="checker" name="checker" value=""/>
                 </div>
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">user pwd</label>
-            <input type="password" class="form-control" id="userpwd" name="userpwd" placeholder="Password">
+            <label for="exampleInputPassword1">비밀번호</label>
+            <input type="password" class="form-control" id="userpwd" name="userpwd" placeholder="비밀번호">
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">user pwd</label>
-            <input type="password" class="form-control" id="userpwd" name="userpwd" placeholder="Password">
+            <label for="exampleInputPassword1">비밀번호 확인</label>
+            <input type="password" class="form-control" id="userpwd2" name="userpwd2" placeholder="비밀번호 확인">
           </div>
             <div class="form-group">
-            <label for="exampleInputPassword1">user name</label>
-            <input type="password" class="form-control" id="username" name="username" placeholder="user name">
+            <label for="exampleInputPassword1">닉네임</label>
+            <input type="password" class="form-control" id="username" name="username" placeholder="닉네임">
           </div>
           <div class="form-group">
-          <button type="submit" class="btn btn-default btn-primary" id="btnSubmit">Regist</button>
+          <button type="submit" class="btn btn-default btn-primary" id="btnSubmit">가입하기</button>
         </form>
     </div>
 {% endblock %}
