@@ -14,7 +14,6 @@ class CookieHelper(object):
         self.app = app
         self.app.cookie_helper = self
 
-
     def SetCookies(self, response, user):
         aes = pyaes.AESModeOfOperationCTR(self.app.config['SECRET_KEY'])
         chiphertext = aes.encrypt(user.to_json())
@@ -33,20 +32,21 @@ class CookieHelper(object):
         else:
             return None
 
-    #쿠키 내역 아이디만 추출
+    # 쿠키 내역 아이디만 추출
     def GetUserID(self, request):
         c = self.GetCookies(request)
         user = UserVO()
         if c is not None:
             user.to_object(c)
-        return user
+        return user.user_id
 
-    #쿠키 체크 decorator
-    def CheckCookie(self,f):
+    # 쿠키 체크 decorator
+    def CheckCookie(self, f):
         @wraps(f)
         def _check_cookie_(*arg, **kwargs):
             cookie = self.GetCookies(request)
             if cookie is None:
                 return redirect('/')
             return f(*arg, **kwargs)
+
         return _check_cookie_

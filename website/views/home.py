@@ -12,7 +12,7 @@ class home():
 
     @mod.route('/')
     def index():
-        return render_template('home/index.html', title = 'Index')
+        return render_template('home/index.html', title='Index')
 
     @mod.route('/login/', methods=['GET', 'POST'])
     def login():
@@ -35,9 +35,8 @@ class home():
     @mod.route('/main/')
     @cookie_helper.CheckCookie
     def main():
-        #id = cookie_helper.GetUserID(request).user_id
-        return render_template('home/main.html', title = '', userid = None)
+        return render_template('home/main.html', title='', userid=cookie_helper.GetUserID(request))
 
     @mod.route('/register/')
     def register():
-        return render_template('home/register.html', title = '')
+        return render_template('home/register.html', title='')
