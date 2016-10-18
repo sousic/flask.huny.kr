@@ -11,3 +11,14 @@ CREATE TABLE `member` (
 	`is_confirm`	INTEGER DEFAULT ''0'',
 	`is_login_lock`	INTEGER DEFAULT ''0''
 );
+
+--입금내역
+CREATE TABLE deposit
+(
+    seq INTEGER PRIMARY KEY,
+    year TEXT,
+    month TEXT,
+    user_id TEXT,
+    amount TEXT,
+    reg_date TEXT
+);

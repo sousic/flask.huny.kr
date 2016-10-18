@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block script %}
+<script>
+    var Form  = {
+        ChkFrm:function(e)
+        {
+
+        },
+    };
+
+    $(function() {
+       $("#sForm").on("submit", Form.ChkFrm);
+    });
+</script>
+{% endblock %}
+{% block body%}
+    내역~~
+    {{ result }}
+{% endblock %}
+{% block footer %}
+{% endblock %}

@@ -14,5 +14,8 @@ common_dao = commonDAO(app)
 
 from views.home import home
 from views.member import member
+from views.deposit import deposit
+
 app.register_blueprint(home.mod)
 app.register_blueprint(member.mod)
+app.register_blueprint(deposit.mod)

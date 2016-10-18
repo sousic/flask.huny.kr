@@ -1,5 +1,4 @@
 # -*- coding: UTF-8 -*-
-from website.persistence.commonDAO import commonDAO
 
 
 class memberDAO:
