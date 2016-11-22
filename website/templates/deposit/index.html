@@ -14,8 +14,30 @@
 </script>
 {% endblock %}
 {% block body%}
-    내역~~
-    {{ result }}
+    <div>
+        <table class="table">
+            <thead>
+                <th>일련번호</th>
+                <th>년도</th>
+                <th>월</th>
+                <th>금액</th>
+                <th>입급자</th>
+                <th>등록일</th>
+            </thead>
+            <tbody>
+            {% for item in result %}
+            <tr>
+                <td>{{item.seq}}</td>
+                <td>{{item.year}}</td>
+                <td>{{item.month}}</td>
+                <td>{{item.amount|number_format}}</td>
+                <td>{{item.user_id}}</td>
+                <td>{{item.reg_date}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
 {% block footer %}
 {% endblock %}

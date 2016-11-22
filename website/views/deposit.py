@@ -4,6 +4,7 @@ from flask import render_template
 
 from website import common_dao
 from website.persistence.depositDAO import depositDAO
+from website.views import naviHelper
 
 deposit_dao = depositDAO(common_dao)
 
@@ -12,5 +13,7 @@ class deposit():
 
     @mod.route('/')
     def index():
+        nav_title = naviHelper.printNavi()
+
         result = deposit_dao.selectDeposit(year=2016, month=None, user_id=None)
-        return render_template('deposit/index.html', title='', result=result)
+        return render_template('deposit/index.html', **locals())

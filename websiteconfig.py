@@ -7,9 +7,9 @@ import os
 _basedir = os.path.abspath(os.path.dirname(__file__))
 
 DEBUG = True
-SECRET_KEY = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
+SECRET_KEY = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' #암호화 키
 BCRYPT_LEVEL = 1
-IV = 'BBBBBBBBBBBBBBBB'
+IV = 'BBBBBBBBBBBBBBBB' #암호화 IV
 #DATABASE_URI = 'sqllite:///' + os.path.join(_basedir, 'website.db')
 DATABASE_URI = os.path.join(_basedir,'website.db')
 COOKIE_NAME = 'FWHK'

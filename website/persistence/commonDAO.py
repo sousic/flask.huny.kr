@@ -1,12 +1,14 @@
 # -*- coding: UTF-8 -*-
 import sqlite3
 
+
 class commonDAO:
     def __init__(self, app):
         self.app = app
 
     def connection_db(self):
         self.sqlite_db = sqlite3.connect(self.app.config['DATABASE_URI'])
+        self.sqlite_db.row_factory = sqlite3.Row
         self.sqlite_db
 
     def disconnection_db(self):

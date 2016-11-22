@@ -5,7 +5,7 @@ from website.domain.basicVO import basicVO
 
 class depositVO(basicVO):
     seq = 0
-    month = datetime.date.year
+    year = datetime.date.year
     month = datetime.date.day
     user_id = ''
     amount = 0
