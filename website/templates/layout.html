@@ -18,9 +18,9 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                {% if nav_title is not none: %}
-                    {% for nav in nav_title %}
-                    <li class="active"><a href="#">{{ nav }}</a></li>
+                {% if tabNaviList is not none: %}
+                    {% for naviItem in tabNaviList %}
+                    <li {{ naviItem.active()|safe }}><a href="#">{{ naviItem.title }}</a></li>
                     {% endfor %}
                 {% endif %}
                 </ul>
