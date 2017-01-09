@@ -17,7 +17,9 @@ class commonDAO:
     def executeQuery(self, querys, args=(), one=False):
         self.connection_db()
         cur = self.sqlite_db.execute(querys, args)
-        rs = cur.fetchall()
+        #rs = cur.fetchall()
+        rs = [dict((cur.description[i][0], value)  \
+                   for i, value in enumerate(row)) for row in cur.fetchall()]
         cur.close()
         self.disconnection_db()
         return (rs[0] if rs else None) if one else rs

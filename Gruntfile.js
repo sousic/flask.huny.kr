@@ -18,6 +18,11 @@ module.exports = function (grunt) {
                 src : 'node_modules/bootstrap/dist/js/bootstrap.min.js',
                 dest : dest_js_path + '/bootstrap/bootstrap.min.js'
             },
+            angular : {
+                src : 'node_modules/angular/angular.min.js',
+                dest : dest_js_path + '/angular/angular.min.js'
+            },
+
             bootstrap_css : {
                 src : 'node_modules/bootstrap/dist/css/bootstrap.min.css',
                 dest : dest_css_path + '/bootstrap/bootstrap.min.css'

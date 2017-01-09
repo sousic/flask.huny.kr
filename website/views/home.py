@@ -5,6 +5,7 @@ from flask import make_response
 
 from website import cookie_helper
 from website.domain.UserVO import UserVO
+from website.views import naviHelper
 
 
 class home():
@@ -35,7 +36,8 @@ class home():
     @mod.route('/main/')
     @cookie_helper.CheckCookie
     def main():
-        return render_template('home/main.html', title='', userid=cookie_helper.GetUserID(request))
+        tabNaviList = naviHelper.printNavi()
+        return render_template('home/main.html', title='', userid=cookie_helper.GetUserID(request), tabNaviList=tabNaviList)
 
     @mod.route('/register/')
     def register():

@@ -1,7 +1,6 @@
 # -*- coding: UTF-8 -*-
 from flask import Blueprint
 from flask import render_template
-from flask import request
 
 from website import common_dao, cookie_helper
 from website.persistence.depositDAO import depositDAO

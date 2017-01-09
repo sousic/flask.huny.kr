@@ -50,3 +50,9 @@ class CookieHelper(object):
             return f(*arg, **kwargs)
 
         return _check_cookie_
+
+    #로그인 체크
+    def IsLogin(self, request):
+        if self.GetUserID(request) is None:
+            return False
+        return True

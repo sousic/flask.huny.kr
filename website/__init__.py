@@ -16,10 +16,12 @@ cookie_helper.init_app(app)
 
 common_dao = commonDAO(app)
 
-from views.home import home
-from views.member import member
-from views.deposit import deposit
+from website.views.home import home
+from website.views.member import member
+from website.views.deposit import deposit
+from website.views.api.deposit_api import deposit_api
 
 app.register_blueprint(home.mod)
 app.register_blueprint(member.mod)
 app.register_blueprint(deposit.mod)
+app.register_blueprint(deposit_api.mod)
