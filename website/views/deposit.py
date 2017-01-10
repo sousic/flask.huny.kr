@@ -16,4 +16,5 @@ class deposit():
     def index():
         tabNaviList = naviHelper.printNavi()
 
-        return render_template('deposit/index.html', **locals())
+        return render_template('deposit/index.html', tabNaviList = tabNaviList)
+        #, **locals())

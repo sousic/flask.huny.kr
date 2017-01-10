@@ -10,7 +10,6 @@ app = Flask(__name__)
 Triangle(app)
 #필터 등록
 app.jinja_env.filters['number_format'] = CustomFilters.filter_number_format
-
 app.config.from_object('websiteconfig')
 
 cookie_helper = CookieHelper()
