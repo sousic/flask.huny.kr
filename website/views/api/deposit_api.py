@@ -21,4 +21,5 @@ class deposit_api():
             return result.to_jsoin()
             #return deposit_dao.selectDeposit(year=2016, month=None, user_id=None)
         else:
-            return jsonify(basicVO)
+            result = jsonBasic(0, "Not Login")
+            return result.to_jsoin()

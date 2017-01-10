@@ -1,11 +1,13 @@
 # -*- coding: UTF-8 -*-
 from flask import Flask
+from flask_triangle import Triangle
 
 from website import CustomFilters
 from website.CookieHelper import CookieHelper
 from website.persistence.commonDAO import commonDAO
 
 app = Flask(__name__)
+Triangle(app)
 #필터 등록
 app.jinja_env.filters['number_format'] = CustomFilters.filter_number_format
 

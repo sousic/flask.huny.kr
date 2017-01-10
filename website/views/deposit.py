@@ -16,5 +16,4 @@ class deposit():
     def index():
         tabNaviList = naviHelper.printNavi()
 
-        result = deposit_dao.selectDeposit(year=2016, month=None, user_id=None)
         return render_template('deposit/index.html', **locals())

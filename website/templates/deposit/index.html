@@ -1,4 +1,6 @@
 {% extends "layout.html" %}
+{% block html %} ng-app="deposit"{% endblock %}
+{% block body %} ng-controller="depositCtrl"{% endblock %}
 {% block script %}
 <script>
     var Form  = {
@@ -11,9 +13,16 @@
     $(function() {
        $("#sForm").on("submit", Form.ChkFrm);
     });
+
+    var depositApp = angular.module("deposit",[]);
+    depositApp.controller("depositCtrl", function($scope, $http) {
+        $http.get("/api/deposit/list").then(function(response) {
+            $scope.depositList = response.data;
+        });
+    });
 </script>
 {% endblock %}
-{% block body%}
+{% block contents%}
     <div>
         <table class="table">
             <thead>
@@ -25,7 +34,16 @@
                 <th>등록일</th>
             </thead>
             <tbody>
-            {% for item in result %}
+            <tr ng-repeat="depositItem in depositList.result">
+                <td>{{depositItem.seq|angular}}</td>
+                <td>{{depositItem.year|angular}}</td>
+                <td>{{depositItem.month|angular}}</td>
+                <td>{{depositItem.amount|angular}}</td>
+                <td>{{depositItem.user_id|angular}}</td>
+                <td>{{depositItem.reg_date|angular}}</td>
+            </tr>
+            <!--{% if result is not none: %}
+                {% for item in result %}
             <tr>
                 <td>{{item.seq}}</td>
                 <td>{{item.year}}</td>
@@ -35,6 +53,7 @@
                 <td>{{item.reg_date}}</td>
             </tr>
             {% endfor %}
+            {% endif %}-->
             </tbody>
         </table>
         <br/>

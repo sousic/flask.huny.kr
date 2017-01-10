@@ -6,7 +6,7 @@ class jsonBasic():
     resultMsg = None
     result = None
 
-    def __init__(self, resultCode, resultMsg, result):
+    def __init__(self, resultCode, resultMsg, result=None):
         self.resultCode = resultCode
         self.resultMsg = resultMsg
         self.result = result

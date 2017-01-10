@@ -53,6 +53,8 @@ class CookieHelper(object):
 
     #로그인 체크
     def IsLogin(self, request):
-        if self.GetUserID(request) is None:
+        cookie = self.GetCookies(request)
+        if cookie is None:
             return False
-        return True
+        else:
+            return True
